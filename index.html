@@ -29,9 +29,10 @@
 
                 <div id="grupo-tipo-identificacion" class="form-group">
                     <label id="label-tipo-identificacion" for="tipo_identificacion">Tipo de identificación:</label>
-                    <select id="tipo_identificacion" name="tipo_identificacion"  required>
-                        <option value="" disable >Seleccione...</option>
-                        <option id="opcion-cc" value="13" selected>Cédula de ciudadanía</option>
+                    <!-- El placeholder de T.I. está selected y disabled -->
+                    <select id="tipo_identificacion" name="tipo_identificacion" required>
+                        <option value="" disabled selected>Seleccione...</option>
+                        <option id="opcion-cc" value="13">Cédula de ciudadanía</option>
                         <option id="opcion-ti" value="12">Tarjeta de identidad</option>
                         <option id="opcion-ce" value="21">Cédula de extranjería</option>
                         <option id="opcion-pe" value="41">Pasaporte</option>
@@ -60,12 +61,45 @@
 
                 <div id="grupo-pais" class="form-group">
                     <label id="label-pais" for="pais">País de domicilio:</label>
-                    <input type="text" id="pais" name="pais" placeholder="Su país de residencia" required>
+                    <select id="pais" name="pais" required>
+                        <!-- Excepción según tablero: Placeholder 1, disabled. Colombia es selected -->
+                        <option value="1" disabled>Seleccione un país...</option>
+                        <option value="169" selected>Colombia</option>
+                        <option value="249">Estados Unidos</option>
+                        <option value="245">España</option>
+                    </select>
                 </div>
 
                 <div id="grupo-ciudad" class="form-group">
-                <label id="label-ciudad" for="ciudad">Ciudad de domicilio:</label>
-                <input type="text" id="ciudad" name="ciudad" placeholder="Su ciudad de residencia" required>
+                    <label id="label-ciudad" for="ciudad">Ciudad de domicilio:</label>
+                    <select id="ciudad" name="ciudad" required>
+                        <!-- Mínimo 5 ciudades por país agrupadas sin JS. Placeholder Idem País (1, disabled) -->
+                        <option value="1" disabled selected>Seleccione una ciudad...</option>
+                        
+                        <optgroup label="Colombia">
+                            <option value="11001">Bogotá, D.C.</option>
+                            <option value="05001">Medellín</option>
+                            <option value="76001">Cali</option>
+                            <option value="08001">Barranquilla</option>
+                            <option value="13001">Cartagena</option>
+                        </optgroup>
+                        
+                        <optgroup label="Estados Unidos">
+                            <option value="US-NY">Nueva York</option>
+                            <option value="US-MI">Miami</option>
+                            <option value="US-LA">Los Ángeles</option>
+                            <option value="US-CH">Chicago</option>
+                            <option value="US-HO">Houston</option>
+                        </optgroup>
+
+                        <optgroup label="España">
+                            <option value="ES-MA">Madrid</option>
+                            <option value="ES-BA">Barcelona</option>
+                            <option value="ES-VA">Valencia</option>
+                            <option value="ES-SE">Sevilla</option>
+                            <option value="ES-BI">Bilbao</option>
+                        </optgroup>
+                    </select>
                 </div>
         
                 <div id="grupo-tratamiento-datos" class="form-group">
@@ -73,13 +107,12 @@
                     <a id="enlace-terminos" href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=49981" target="_blank">Términos y condiciones</a>
                 
                     <div id="grupo-checkbox">
-                        <input type="checkbox" id="tratamiento_datos" name="tratamiento_datos">
-                        <label id="label-tratamiento" for="tratamiento_datos">Acepto el tratamiento de mis datos personales después de haber leído los términos y condiciones</label>
-                    </div>
+                        <input type="checkbox" id="tratamiento_datos" name="tratamiento_datos" required>
+                        <label id="label-tratamiento" for="tratamiento_datos">Acepto 
                 </div>
 
                 <div id="grupo-boton-enviar" class="form-group">
-                    <input type="submit" id="boton-enviar" value="Enviar">
+                    <button type="button">Enviar</button>
                 </div>
 
             </form>
